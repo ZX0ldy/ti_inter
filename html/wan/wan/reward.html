@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-<!-- Mirrored from quomodosoft.com/html/wan/wan/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Feb 2025 12:06:45 GMT -->
-<!-- Added by HTTrack -->
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
-
 <head>
-    <!--- Basic Page Needs  -->
+    <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <title>Infix</title>
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Mobile Specific Meta  -->
+    <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <!-- CSS -->
 
+    <!-- CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/jquery-ui.css">
     <link rel="stylesheet" href="css/all.min.css">
@@ -29,19 +24,23 @@
     <link rel="stylesheet" href="fonts/stylesheet.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/png" href="img/LogoKelas1.png">
 </head>
 
 <body>
     <div id="preloader"></div>
+
+    <!-- HEADER -->
     <header>
         <div class="header-container">
             <div class="row">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                    <div class="logo">
-                        <a href="index.html" class="link">1nfix</span></a>
+                    <div class="logo mt-3">
+                        <a href="index.html" class="link">1nfix</a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-3 col-sm-8 col-6">
@@ -55,7 +54,7 @@
                                         <a class="nav-link" href="members.html" data-page="members">Members</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="reward.html" data-page="reward">Reward</a>
+                                        <a class="nav-link active" href="reward.html" data-page="reward">Reward</a>
                                     </li>
                                 </ul>
                             </div>
@@ -73,27 +72,28 @@
             </div>
         </div>
     </header>
-<section class="hero-area">
-  <div class="container text-center">
-    <div class="reward-wrapper py-5">
-      <div class="reward-icon mb-4">
-        <div class="rounded-circle d-inline-flex align-items-center justify-content-center shadow-sm" 
-             style="width:120px;height:120px;background-color:#f5f6fa;">
-          <i class="bi bi-trophy" style="font-size:60px;color:#adb5bd;"></i>
+
+    <!-- HERO SECTION -->
+    <section class="hero-area">
+        <div class="container text-center">
+            <div class="reward-wrapper py-5">
+                <div class="reward-icon mb-4">
+                    <div class="rounded-circle d-inline-flex align-items-center justify-content-center shadow-sm"
+                        style="width:120px;height:120px;background-color:#f5f6fa;">
+                        <i class="bi bi-trophy" style="font-size:60px;color:#adb5bd;"></i>
+                    </div>
+                </div>
+
+                <h3 class="fw-bold mb-2">No Rewards Yet</h3>
+                <p class="text-muted mb-4">
+                    Our class hasn’t earned any awards or achievements yet.<br>
+                    Stay motivated — the next victory is waiting for us 💪
+                </p>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <h3 class="fw-bold mb-2">No Rewards Yet</h3>
-      <p class="text-muted mb-4">
-        Our class hasn’t earned any awards or achievements yet.<br>
-        Stay motivated — the next victory is waiting for us 💪
-      </p>
-    </div>
-  </div>
-</section>
-
-
-
+    <!-- FOOTER -->
     <footer>
         <div class="footer-bottom-area">
             <div class="container">
@@ -101,17 +101,23 @@
                     <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                         <div class="fba-social">
                             <ul class="social">
-                                <li><a href="https://www.instagram.com/int.formatics_class/" target="_blank"
-                                        rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"
-                                            aria-hidden="true"></i><span class="text">Instagram</span></a></li>
+                                <li>
+                                    <a href="https://www.instagram.com/int.formatics_class/" target="_blank"
+                                        rel="noopener noreferrer" aria-label="Instagram">
+                                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                                        <span class="text">Instagram</span>
+                                    </a>
+                                </li>
                             </ul>
-                            <p class="copyright">Copyright By@LAGeneracionDoradaDe1nfix+ - 2025</p>
+                            <p class="copyright">Copyright By @LAGeneracionDoradaDe1nfix+ - 2025</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- JS: NAVBAR INTERAKTIF -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const links = document.querySelectorAll(".custom-nav-pills .nav-link");
@@ -122,6 +128,7 @@
                 const parentRect = element.parentElement.parentElement.getBoundingClientRect();
                 indicator.style.width = rect.width + "px";
                 indicator.style.left = rect.left - parentRect.left + "px";
+                indicator.style.transition = "all 0.3s ease";
             }
 
             links.forEach(link => {
@@ -130,6 +137,11 @@
                     links.forEach(l => l.classList.remove("active"));
                     this.classList.add("active");
                     moveIndicator(this);
+
+                    // beri jeda kecil agar animasi indikator jalan dulu
+                    setTimeout(() => {
+                        window.location.href = this.getAttribute("href");
+                    }, 150);
                 });
             });
 
@@ -139,8 +151,7 @@
         });
     </script>
 
-
-    <!-- Scripts -->
+    <!-- SCRIPTS -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
     <script src="js/wow.min.js"></script>
@@ -158,8 +169,5 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/theme.js"></script>
 </body>
-
-
-<!-- Mirrored from quomodosoft.com/html/wan/wan/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Feb 2025 12:07:18 GMT -->
 
 </html>

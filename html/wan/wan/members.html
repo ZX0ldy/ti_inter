@@ -40,33 +40,33 @@
         <div class="header-container">
             <div class="row">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                    <div class="logo">
+                    <div class="logo mt-3">
                         <a href="index.html" class="link">1nfix</span></a>
                     </div>
                 </div>
 <div class="col-lg-6 col-md-3 col-sm-8 col-6">
-    <div class="main-menu stellarnav">
-        <nav class="navbar-custom py-3" style="background-color: transparent;">
-            <div class="container justify-content-center p-0">
-                <ul class="nav nav-pills custom-nav-pills">
-                    
-                    <span class="active-indicator"></span> 
+  <div class="main-menu stellarnav">
+    <nav class="navbar-custom py-3" style="background-color: transparent;">
+      <div class="container justify-content-center p-0">
+        <ul class="nav nav-pills custom-nav-pills position-relative">
+          <span class="active-indicator position-absolute"></span>
 
-                    <li class="nav-item" data-page="members">
-                        <a class="nav-link custom-nav-link" href="home6-cleanrex.html">Members</a>
-                    </li>
-                    <li class="nav-item" data-page="reward">
-                        <a class="nav-link custom-nav-link" href="reward.html">Reward</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+          <li class="nav-item">
+            <a href="members.html" class="nav-link active">Members</a>
+          </li>
+          <li class="nav-item">
+            <a href="reward.html" class="nav-link">Reward</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 </div>
+
                 <div class="col-lg-4 col-md-6 col-sm-7 col-12 d-none d-md-block">
                     <div class="header-right">
                         <div class="get-quote">
-                            <a href="#" class="link btn-style-1">Sign In</a>
+                            <a href="#" class="link btn-style-1 mt-4">Sign In</a>
                         </div>
                     </div>
                 </div>
@@ -165,42 +165,38 @@
         </div>
     </footer>
     <!-- Scripts -->
-     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const activeIndicator = document.querySelector('.active-indicator');
-    const customNavPills = document.querySelector('.custom-nav-pills');
-    const activeLink = document.querySelector('.custom-nav-link.active');
-    
-    // Fungsi untuk memperbarui posisi indikator
-    function updateIndicator(link) {
-        if (link) {
-            const linkRect = link.getBoundingClientRect(); 
-            const pillsRect = customNavPills.getBoundingClientRect(); 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const links = document.querySelectorAll(".custom-nav-pills .nav-link");
+  const indicator = document.querySelector(".active-indicator");
 
-            // Hitung posisi 'left' relatif terhadap wadah .custom-nav-pills
-            const indicatorLeft = linkRect.left - pillsRect.left;
-            const indicatorWidth = linkRect.width;
+  function moveIndicator(element) {
+    const rect = element.getBoundingClientRect();
+    const parentRect = element.parentElement.parentElement.getBoundingClientRect();
+    indicator.style.width = rect.width + "px";
+    indicator.style.left = rect.left - parentRect.left + "px";
+  }
 
-            activeIndicator.style.left = `${indicatorLeft}px`;
-            activeIndicator.style.width = `${indicatorWidth}px`;
-        }
-    }
+  // Efek klik dengan pindah halaman
+  links.forEach(link => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      links.forEach(l => l.classList.remove("active"));
+      this.classList.add("active");
+      moveIndicator(this);
 
-    // Posisikan indikator segera setelah DOM dimuat (dan semua CSS telah diterapkan)
-    if (activeLink) {
-        // Jeda singkat penting agar browser selesai menghitung layout dan ukuran elemen.
-        setTimeout(() => {
-            updateIndicator(activeLink);
-        }, 50); 
-    }
-    
-    // Opsional: Perbarui indikator jika ukuran jendela berubah (responsif)
-    window.addEventListener('resize', function() {
-        const currentActiveLink = document.querySelector('.custom-nav-link.active');
-        updateIndicator(currentActiveLink);
+      // pindah halaman dengan sedikit delay animasi
+      setTimeout(() => {
+        window.location.href = this.getAttribute("href");
+      }, 150);
     });
+  });
+
+  // Posisi awal indikator
+  const activeLink = document.querySelector(".nav-link.active");
+  if (activeLink) moveIndicator(activeLink);
 });
-     </script>
+</script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
     <script src="js/wow.min.js"></script>
