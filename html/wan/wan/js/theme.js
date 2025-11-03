@@ -37,7 +37,7 @@
         breakpoint: 960,
         position: 'right',
         phoneBtn: '18009997788',
-        locationBtn: 'https://www.google.com/maps'
+        locationBtn: 'https://maps.app.goo.gl/mVptS83knFwug3n4A'
     });
 
     /*---------------------
